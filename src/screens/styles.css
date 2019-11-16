@@ -1,0 +1,489 @@
+/* RESET STYLES */
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+    border-spacing: 0;
+}
+
+/*STYLES */
+
+body {
+  position: relative;
+  font-family: 'Roboto', sans-serif;
+  background-color: #404040;
+  color: white;
+}
+
+header {
+  background-color: #5e5c5c;
+  width: 100%;
+  height: 65px;
+}
+
+.header {
+  font-size: 20px;
+  font-weight: bold;
+  letter-spacing: 0.2em;
+}
+
+h1 {
+  display: inline-block;
+  margin-left: 60px;
+}
+
+button,
+button:active,
+button:focus {
+  outline: none;
+}
+
+/* толщина линий */
+
+.line-width-wrapper {
+  display: flex;
+  width: 115px;
+  height: 30px;
+  align-items: center;
+  justify-content: space-around;
+  margin-bottom: 5px;
+  border: 1px solid black;
+  padding: 5px;
+}
+
+.line-1 {
+  width: 7px;
+  height: 7px;
+  background-color: white;
+}
+
+.line-2 {
+  width: 14px;
+  height: 14px;
+  background-color: white;
+}
+
+.line-3 {
+  width: 21px;
+  height: 21px;
+  background-color: white;
+}
+
+.line-4 {
+  width: 28px;
+  height: 28px;
+  background-color: white;
+}
+
+.chosen-line {
+  background-color: BurlyWood;
+}
+
+.panels-wrapper {
+  width: 200px;
+  height: 800px;
+  margin-left: 3%;
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+main {
+  padding-top: 70px;
+  display: flex;
+}
+
+button {
+  display: block;
+  border: 1px solid white;
+  background-color: white;
+  margin-left: 15px;
+  margin-top: 15px;
+  cursor: pointer;
+  font-size: 18px;
+}
+
+.tools {
+  width: 125px;
+  border: 1px solid black;
+  margin-bottom: 15px;
+  height: 440px;
+}
+
+.tool {
+  display: inline-block;
+  width: 45px;
+  height: 45px;
+  background-color: white;
+  border-radius: 5px;
+  margin-left: 10px;
+}
+
+.transform {
+  height: 80px;
+}
+
+.colors {
+  position: relative;
+  width: 75px;
+  height: 75px;
+  left: 25px;
+}
+
+.primary-color,
+.secondary-color {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  border: none;
+  outline: none;
+  background-color: transparent;
+}
+
+.secondary-color {
+  top: 20px;
+  left: 20px;
+}
+
+.rotate-color {
+  position: absolute;
+  top: 48px;
+  left: -10px;
+}
+
+.keyboad-wrapper {
+  width: 64px;
+  height: 40px;
+  padding: 0;
+  background-color: yellow;
+  border: none;
+  margin-top: 30px;
+  margin-left: 25px;
+}
+
+.circle {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  border-radius: 8px;
+  border: 1px solid black;
+  margin-right: 20px;
+}
+
+.canvas-wrapper {
+  width: 640px;
+  height: 680;
+}
+
+.coord {
+  margin-top: 10px;
+  color: yellow;
+}
+
+.main-canvas {
+  background-color: #bababa;
+  width: 640px;
+  height: 640px;
+  image-rendering: pixelated;
+}
+
+/* for js */
+
+.chosen {
+  background-color: BurlyWood;
+}
+
+.child-cell.over {
+  border: 2px dashed DarkSlateGrey;
+}
+
+/* animation-player styles*/
+
+.fraims-tool-wrapper {
+  width: 250px;
+  margin-right: 5%;
+  margin-left: 15px;
+}
+
+.newframe {
+  width: 150px;
+  height: 50px;
+  margin-left: 25px;
+  border: 1px solid RosyBrown;
+  border-radius: 5px;
+}
+
+.newframe:active {
+  background-color: AntiqueWhite;
+}
+
+.fraims-wrapper {
+  width: 200px;
+  height: 630px;
+  border: 1px solid black;
+  margin-top: 20px;
+  overflow-y: scroll;
+}
+
+.fraims-wrapper:hover {
+  cursor: auto;
+}
+
+.frame {
+  width: 100px;
+  height: 100px;
+  margin-top: 20px;
+  margin-left: 45px;
+  border: 1px solid black;
+  image-rendering: pixelated;
+}
+
+.selected-frame {
+  border-color: yellow;
+  border-width: 1px;
+  border-style: solid;
+}
+
+.canvasWrapper {
+  position: relative;
+}
+
+.remove {
+  position: absolute;
+  top: 25px;
+  left: 30px;
+  background: PapayaWhip;
+  padding: 2px;
+  border-radius: 3px;
+  border: 1px solid black;
+}
+
+.copy {
+  position: absolute;
+  top: 87px;
+  left: 30px;
+  background: PapayaWhip;
+  padding: 2px;
+  border-radius: 3px;
+  border: 1px solid black;
+}
+
+.player-wrapper {
+  display: inline-block;
+  width: 200px;
+  height: 320px;
+  background: #5e5c5c;
+  border: 1px solid black;
+  margin-left: 5%;
+  padding-top: 20px;
+}
+
+.animation-canvas {
+  display: block;
+  border: 1px solid black;
+  margin: 0 auto;
+}
+
+.speed-wrapper {
+  width: 140px;
+  height: 60px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 10px;
+}
+
+.speedText {
+  display: block;
+  width: 50px;
+  height: 20px;
+  margin: 0 auto;
+}
+
+/* .animation-start, */
+.full-screen {
+  width: 120px;
+  height: 30px;
+  border: 1px solid black;
+  margin: 10px auto;
+}
+
+.save-gif {
+  margin: 10px auto;
+}
+
+.animation-canvas {
+  image-rendering: pixelated;
+  width: 150px;
+  height: 150px;
+}
+
+.animation-canvas:fullscreen {
+  background-color: #5e5c5c;
+  padding: 25%;
+}
+
+/* полоса прокрутки */
+
+.fraims-wrapper::-webkit-scrollbar-track {
+  background-color:#242323;
+}
+
+.fraims-wrapper::-webkit-scrollbar-thumb {
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+  background-color: #5e5c5c;
+}
+
+.fraims-wrapper::-webkit-scrollbar{
+  width: 10px;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* sign-in */
+
+.g-signin-wrapper {
+  display: flex;
+  font-size: 13px;
+  padding-right: 60px;
+}
+
+.signOut {
+  width: 70px;
+  background-color: #FFD700;
+  color: #696969;
+  padding-top: 10px;
+  padding-left: 18px;
+  cursor: pointer;
+}
+
+.g-signin2 {
+  padding-right: 30px;
+}
+
+.abcRioButton {
+  width: 200px !important;
+}
+
+.abcRioButtonIcon {
+  display: none;
+}
+
+.abcRioButtonContentWrapper img {
+  margin-top: 3px;
+}
+
+.none-visible {
+  display: none;
+}
+
+.profileName {
+  padding-top: 11px;
+}
+
+.profileImage {
+  width: 30px;
+  height: 30px;
+  margin-top: 8px;
+}
+
+.abcRioButtonContentWrapper {
+  display: flex;
+  justify-content: space-around;
+  background: #FFD700;
+  color: #696969;
+}
+
+#not_signed_inlcwirerb2yqy {
+  font-weight: bold;
+}
+
+/* keyboadrs */
+
+.hotkeys-container {
+  position: absolute;
+  bottom: 50px;
+  left: 200px;
+  width: 650px;
+  height: 320px;
+  background-color: white;
+  border: 1px solid black;
+}
+
+.hidden {
+  visibility: hidden;
+}
+
+.hotkeys-list {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.hotkeys-item {
+  margin: 10px;
+  margin-left: 35px;
+}
+
+.hotkeys-title {
+  color: black;
+  font-size: 30px;
+  text-align: center;
+  margin-bottom: 15px;
+  margin-top: 15px;
+}
+
+.hotkey-input {
+  font-size: 25px;
+  text-align: center;
+  margin-top: -10px;
+  text-transform: uppercase;
+}
+
+.hotkeys-close {
+  background-color: #FFD700;
+  position: relative;
+  bottom: 315px;
+  left: 605px;
+}
+

@@ -1,0 +1,41 @@
+{
+  "name": "piskel-clone",
+  "version": "1.0.0",
+  "description": "RSS Piskel-clone task",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "jest",
+    "test-watch": "jest --watch",
+    "coverage": "jest --coverage",
+    "dev": "webpack-dev-server --mode development --watch",
+    "build": "webpack --mode production",
+    "lint": "eslint src/"
+  },
+  "author": "Ganna Fedosova <a.k.fedosova@gmail.com>",
+  "license": "ISC",
+  "dependencies": {
+    "gif.js.optimized": "1.0.1",
+    "lodash": "4.17.11",
+    "upng-js": "2.1.0"
+  },
+  "devDependencies": {
+    "@babel/core": "7.4.4",
+    "@babel/preset-env": "7.4.4",
+    "babel-loader": "8.0.5",
+    "copy-webpack-plugin": "5.0.3",
+    "css-loader": "2.1.1",
+    "eslint": "5.16.0",
+    "eslint-config-airbnb-base": "13.1.0",
+    "eslint-loader": "2.1.2",
+    "eslint-plugin-import": "2.17.2",
+    "file-loader": "4.0.0",
+    "html-webpack-plugin": "3.2.0",
+    "image-webpack-loader": "4.6.0",
+    "jest": "24.8.0",
+    "style-loader": "0.23.1",
+    "url-loader": "2.0.0",
+    "webpack": "4.30.0",
+    "webpack-cli": "3.3.2",
+    "webpack-dev-server": "3.3.1"
+  }
+}

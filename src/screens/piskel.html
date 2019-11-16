@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="google-signin-client_id" content="558080730389-lpis8c67ijttr9vqsvbta0ur0n1ga8ss.apps.googleusercontent.com">
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+
+    <title><%= htmlWebpackPlugin.options.title %></title>
+  </head>
+
+  <body>
+
+    <header>
+      <h1 class="header"> <%= htmlWebpackPlugin.options.myPageHeader %> </h1>
+      <div class="g-signin-wrapper">
+        <div class="g-signin2" data-onsuccess="onSignIn"></div>
+
+        <div id="signOut" class="hidden signOut" onclick="signOut();">Sign out</div>
+
+        <script>
+          function signOut() {
+            var auth2 = gapi.auth2.getAuthInstance();
+            auth2.signOut().then(function () {
+              document.getElementById('signOut').classList.add('hidden');
+              const icon = document.querySelector('.abcRioButtonContentWrapper');
+              const profileImage = document.querySelector('.abcRioButtonContentWrapper img');
+              const profileName = document.querySelector('.profileName');
+              icon.removeChild(profileImage);
+              icon.removeChild(profileName);
+              document.querySelector('.abcRioButtonContents').classList.remove('none-visible');
+            });
+          }
+        </script>
+
+        <script>
+          function onSignIn(googleUser) {
+            document.querySelector('.abcRioButtonContents').classList.add('none-visible');
+            const profile = googleUser.getBasicProfile();
+            const profileNameData = profile.getName();
+            const icon = document.querySelector('.abcRioButtonContentWrapper');
+            const profileImage = document.createElement('img');
+            profileImage.classList.add('profileImage');
+            icon.appendChild(profileImage);
+            profileImage.src = profile.getImageUrl();
+
+            const profileName = document.createElement('span');
+            profileName.classList.add('profileName');
+            profileName.innerHTML = profileNameData;
+            icon.appendChild(profileName);
+
+            document.getElementById('signOut').classList.remove('hidden');
+          }
+        </script>
+      </div>
+    </header>
+
+    <main>
+
+      <div class="panels-wrapper">
+        <div class="line-width-wrapper">
+          <div class="line-1 line-width chosen-line" id="line-1">
+          </div>
+
+          <div class="line-2 line-width" id="line-2">
+          </div>
+
+          <div class="line-3 line-width" id="line-3">
+          </div>
+
+          <div class="line-4 line-width" id="line-4">
+          </div>
+        </div>
+
+        <div class="tools" id="tools">
+            <button class="pen tool" id="penTool" type="button"><img class="img-tool" id="pen" alt="Pen" title="Pen tool"></button>
+            <button class="eraser tool" id="eraserTool" type="button"><img class="img-tool" id="eraser" alt="Eraser" title="Eraser tool"></button>
+            <button class="pipette tool" id="pipetteTool" type="button"><img class="img-tool" id="pipette" alt="Pipette" title="Color picker"></button>
+            <button class="stroke tool" id="strokeTool" type="button"><img class="img-tool" id="stroke" alt="Stroke" title="Stroke tool"></button>
+            <button class="mirror tool" id="mirrorTool" type="button"><img class="img-tool" id="mirror" alt="Mirror" title="Vertical mirror pen"></button>
+            <button class="rect tool" id="rectTool" type="button"><img class="img-tool" id="rect" alt="Rectangle" title="Rectangle tool"></button>
+            <button class="circlee tool" id="circleTool" type="button"><img class="img-tool" id="circle" alt="Circle" title="Circle tool"></button>
+            <button class="movee tool" id="moveTool" type="button"><img class="img-tool" id="move" alt="Move" title="Move tool"></button>
+            <button class="lighten tool" id="lightenTool" type="button"><img class="img-tool" id="lighten" alt="Lighten" title="Lighten tool"></button>
+            <button class="delighten tool" id="delightenTool" type="button"><img class="img-tool" id="delighten" alt="Darken" title="Darken tool"></button>
+            <button class="paintPx tool" id="paintPxTool" type="button"><img class="img-tool" id="paintPx" alt="Paint px" title="Paint all pixels of the same color"></button>
+            <button class="bucket tool" id="bucketTool" type="button"><img class="img-tool" id="bucket" alt="Bucket" title="Canvas bucket tool"></button>
+            <button class="dith tool" id="dithTool" type="button"><img class="img-tool" id="dith" alt="Dithering" title="Dithering tool"></button>
+            <button class="brush tool" id="brushTool" type="button"><img class="img-tool" id="brush" alt="Brush" title="Clear canvas"></button>
+        </div>
+
+        <div class="tools transform" id="transform">
+            <button class="reflect tool" id="reflectTool" type="button"><img class="img-tool" id="reflect" alt="Reflect" title="Flip vertically"></button>
+            <button class="rotate tool" id="rotateTool" type="button"><img class="img-tool" id="rotate" alt="Rotate" title="Rotation"></button>
+        </div>
+
+        <div class="colors">
+          <input class="secondary-color" id="secondary-color" type="color">
+          <input class="primary-color" id="primary-color" type="color">
+          <img class="rotate-color" id="rotate-color" alt="Rotate color">
+        </div>
+
+        <button class="keyboad-wrapper" id="keyboad-wrapper" type="button"><img class="keyboard-tool" id="keyboard-tool" alt="Keyboard"></button>
+
+      </div>
+
+      <div class = "fraims-tool-wrapper">
+        <div class="newframe-button-wrapper">
+          <button class="newframe" id="new-frame-button" type="button">Add new frame</button>
+        </div>
+
+        <div class="fraims-wrapper">
+          <div class="canvasWrapper">
+              <img class="copy" id="copy">
+              <img class="remove" id="remove">
+              <canvas class="frame" id="frame" width="64" height="64"></canvas>
+          </div>
+        </div>
+      </div>
+
+      <div class="canvas-wrapper">
+        <canvas class="main-canvas" id="main-canvas" width="640" height="640"></canvas>
+        <div class="coord" id="coordWrap">[64x64]<span id="coord"></span></div>
+      </div>
+
+      <div class="player-wrapper">
+        <canvas class="animation-canvas" width="150" height="150"></canvas>
+        <div class="speed-wrapper">
+            <input type="range" id="speedAnimation" name="speed"
+                   min="1" max="24">
+            <label class="speedText" for="speed">Speed</label>
+          </div>
+        <button class="full-screen" id="full-screen" type="button">Full screen</button>
+
+        <div class="save">
+          <button class="save-gif" id="save-gif" type="button">Save .gif</button>
+        </div>
+      </div>
+  </main>
+  <div class="hotkeys-container hidden" id="hotkeys-container">
+    <h2 class="hotkeys-title">Keyboard shortcuts</h2>
+    <ul class="hotkeys-list">
+      <li class="hotkeys-item">
+        <img class="hotkeys-tool" id="hotkeys-img-pen" alt="Pen" title="Pen tool">
+        <input type="text" class="hotkey-input" id="hotkey-pen" maxlength="1" size="1">
+      </li>
+      <li class="hotkeys-item">
+        <img class="hotkeys-tool" id="hotkeys-img-eraser" alt="Eraser" title="Eraser tool">
+        <input type="text" class="hotkey-input" id="hotkey-easer" maxlength="1" size="1">
+      </li>
+      <li class="hotkeys-item">
+        <img class="hotkeys-tool" id="hotkeys-img-pipette" alt="Pipette" title="Color picker">
+        <input type="text" class="hotkey-input" id="hotkey-pipette" maxlength="1" size="1">
+      </li>
+      <li class="hotkeys-item">
+        <img class="hotkeys-tool" id="hotkeys-img-stroke" alt="Stroke" title="Stroke tool">
+        <input type="text" class="hotkey-input" id="hotkey-stroke" maxlength="1" size="1">
+      </li>
+      <li class="hotkeys-item">
+        <img class="hotkeys-tool" id="hotkeys-img-mirror" alt="Mirror pen" title="Vertical mirror pen">
+        <input type="text" class="hotkey-input" id="hotkey-mirror" maxlength="1" size="1">
+      </li>
+      <li class="hotkeys-item">
+        <img class="hotkeys-tool" id="hotkeys-img-rectangle" alt="Rectangle" title="Rectangle tool">
+        <input type="text" class="hotkey-input" id="hotkey-rectangle" maxlength="1" size="1">
+      </li>
+      <li class="hotkeys-item">
+        <img class="hotkeys-tool" id="hotkeys-img-circle" alt="Circle" title="Circle tool">
+        <input type="text" class="hotkey-input" id="hotkey-circle" maxlength="1" size="1">
+      </li>
+      <li class="hotkeys-item">
+        <img class="hotkeys-tool" id="hotkeys-img-move" alt="Move" title="Move tool">
+        <input type="text" class="hotkey-input" id="hotkey-move" maxlength="1" size="1">
+      </li>
+      <li class="hotkeys-item">
+        <img class="hotkeys-tool" id="hotkeys-img-lighten" alt="Lighten" title="Lighten tool">
+        <input type="text" class="hotkey-input" id="hotkey-lighten" maxlength="1" size="1">
+      </li>
+      <li class="hotkeys-item">
+        <img class="hotkeys-tool" id="hotkeys-img-darken" alt="Darken" title="Darken tool">
+        <input type="text" class="hotkey-input" id="hotkey-darken" maxlength="1" size="1">
+      </li>
+      <li class="hotkeys-item">
+        <img class="hotkeys-tool" id="hotkeys-img-bucket-px" alt="Paint bucket same pixels" title="Paint all pixels of the same color">
+        <input type="text" class="hotkey-input" id="hotkey-bucket-px" maxlength="1" size="1">
+      </li>
+      <li class="hotkeys-item">
+        <img class="hotkeys-tool" id="hotkeys-img-bucket" alt="Paint bucket" title="Canvas bucket tool">
+        <input type="text" class="hotkey-input" id="hotkey-bucket" maxlength="1" size="1">
+      </li>
+      <li class="hotkeys-item">
+        <img class="hotkeys-tool" id="hotkeys-img-ditchering" alt="Ditchering" title="Dithering tool">
+        <input type="text" class="hotkey-input" id="hotkey-ditchering" maxlength="1" size="1">
+      </li>
+      <li class="hotkeys-item">
+        <img class="hotkeys-tool" id="hotkeys-img-clear" alt="Clear canvas" title="Clear canvas">
+        <input type="text" class="hotkey-input" id="hotkey-clear" maxlength="1" size="1">
+      </li>
+    </ul>
+    <button class="hotkeys-close" id="hotkeys-close" type="button">X</button>
+  </div>
+  </body>
+</html>
